@@ -71,11 +71,11 @@ GEM
     coffee-script (2.4.1)
       coffee-script-source
       execjs
-    coffee-script-source (1.12.2)
+    coffee-script-source (1.8.0)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
     erubi (1.7.1)
-    execjs (2.7.0)
+    execjs (2.2.2)
     factory_bot (4.11.1)
       activesupport (>= 3.0.0)
     ffi (1.9.25-x86-mingw32)
@@ -200,7 +200,9 @@ DEPENDENCIES
   bootstrap-sass
   byebug
   capybara (>= 2.15)
-  coffee-rails (~> 4.2)
+  coffee-rails
+  coffee-script-source (= 1.8.0)
+  execjs (~> 2.2.2)
   factory_bot
   jbuilder (~> 2.5)
   pg
