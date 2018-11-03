@@ -15,4 +15,11 @@ module ApplicationHelper
     feed = Feedjira::Feed.fetch_and_parse fapl
     feed
   end
+
+
+  def show_svg(path)
+    File.open("app/assets/images/#{path}", "rb") do |file|
+      raw file.read
+    end
+  end
 end

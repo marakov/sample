@@ -1,24 +1,82 @@
 <% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
+<!--<h1>Sign up</h1>-->
 
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages' %>
+<!--<div class="row">-->
+<!--  <div class="span6 offset3">-->
+<%#= form_for(@user) do |f| %>
+<%#= render 'shared/error_messages' %>
 
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+<%#= f.label :name %>
+<%#= f.text_field :name %>
 
-      <%= f.label :email %>
-      <%= f.text_field :email %>
+<%#= f.label :email %>
+<%#= f.text_field :email %>
 
-      <%= f.label :password %>
-      <%= f.password_field :password %>
+<%#= f.label :password %>
+<%#= f.password_field :password %>
 
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation %>
+<%#= f.label :password_confirmation, "Confirmation" %>
+<%#= f.password_field :password_confirmation %>
 
-      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
-    <% end %>
+<%#= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+<%# end %>
+<!--  </div>-->
+<!--</div>-->
+
+
+
+<div class="header">
+  <h3 class="sign-in">Sign up</h3>
+  <div class="button">
+    <%= link_to "Home", root_path %>
   </div>
 </div>
+<div class="clear"></div>
+
+<%= form_for(@user) do |f| %>
+  <%= render 'shared/error_messages' %>
+  <div>
+    <%= f.label :name, class: "user" do %>
+      <svg viewBox="0 0 32 32">
+        <g filter="">
+          <use xlink:href="#lock-locker"></use>
+        </g>
+      </svg>
+    <% end %>
+    <%= f.text_field :name, placeholder: "Nick" %>
+  </div>
+  <div>
+    <%= f.label :email, class: "user" do %>
+      <svg viewBox="0 0 32 32">
+        <g filter="">
+          <use xlink:href="#lock-locker"></use>
+        </g>
+      </svg>
+    <% end %>
+    <%= f.text_field :email, placeholder: "Email" %>
+  </div>
+  <div>
+    <%= f.label :password, class: "user" do %>
+      <svg viewBox="0 0 32 32">
+        <g filter="">
+          <use xlink:href="#lock-locker"></use>
+        </g>
+      </svg>
+    <% end %>
+    <%= f.password_field :password, placeholder: "Key" %>
+  </div>
+  <div>
+    <%= f.label :password_confirmation, class: "user" do %>
+      <svg viewBox="0 0 32 32">
+        <g filter="">
+          <use xlink:href="#lock-locker"></use>
+        </g>
+      </svg>
+    <% end %>
+    <%= f.password_field :password_confirmation, placeholder: "Confirm" %>
+  </div>
+  <div>
+    <%= f.submit "Create my account" %>
+  </div>
+  <div class="clear"></div>
+<% end %>
