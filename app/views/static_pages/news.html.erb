@@ -1,0 +1,21 @@
+<div class="news">
+  <h3 class="news__title">Новости</h3>
+  <ul class="news__list">
+    <% get_feed.entries.each do |e| %>
+      <li class="news_item">
+        <img class="left" src="<%= "#{e.image}" %>">
+        <div class="right">
+          <h3>
+            <a href="<%= "#{e.url}" %>">
+              <%= "#{e.title}" %>
+            </a>
+          </h3>
+          <p>
+            <%= "#{e.summary}" %>
+          </p>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
+

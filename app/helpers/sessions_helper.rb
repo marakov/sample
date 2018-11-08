@@ -6,6 +6,10 @@ module SessionsHelper
     self.current_user = user
   end
 
+  def is_current_user(user)
+    @current_user == user
+  end
+
   def current_user=(user)
     @current_user = user
   end

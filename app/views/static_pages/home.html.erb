@@ -1,22 +1,20 @@
-<div class="center hero-unit">
-  <h1>Welcome</h1>
+<style>
+  body {
+    margin: 0;
+    background: #0f1b23;
+  }
+</style>
+<div class="greeting">
+  <h1>
+    Welcome to your personal news portal</h1>
+  <h2>
+    Watch news you are interested in - nothing extra and no advertising!
+  </h2>
+  <h2>
+    Subscribe to categorized channels, follow other users, make your own posts
+  </h2>
 
-  <% get_feed.entries.each do |e| %>
-
-    <div class="feed">
-      <img src="<%= "#{e.image}" %>">
-
-      <h2>
-        <%= "#{e.title}" %><br/>
-      </h2>
-      <p>
-        <%= "#{e.summary}" %><br/>
-      </p>
-      <a href="<%= "#{e.url}" %>">Read more..</a>
-    </div>
-
-    <br/>
-  <% end %>
-
+  <h3>Have no account? <%= link_to "Sign up right now!", signup_path %>
+    Or <%= link_to "Sign in", signin_path %>
+  </h3>
 </div>
-

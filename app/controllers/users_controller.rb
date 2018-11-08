@@ -5,6 +5,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    if !signed_in?
+      redirect_to root_url
+    end
+    if !is_current_user(@user)
+      redirect_to root_url
+    end
   end
 
   def create

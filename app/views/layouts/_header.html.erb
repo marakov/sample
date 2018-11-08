@@ -1,13 +1,12 @@
-<header class="header">
-  <nav class="menu">
-    <ul class="list menu__list">
-      <li class="menu__group">
-        <%= link_to "Home", root_path %>
-      </li>
-      <li class="menu__group">
-        <%= link_to "Help", help_path %>
-      </li>
-      <% if signed_in? %>
+<div class="header">
+  <ul class="menu__list">
+    <li class="menu__group">
+      <%= link_to "News", news_path %>
+    </li>
+    <li class="menu__group">
+      <%= link_to "Help", help_path %>
+    </li>
+    <% if signed_in? %>
       <li class="menu__group">
         <%= link_to "Profile", current_user %>
       </li>
@@ -17,9 +16,11 @@
       <li class="menu__group">
         <%= link_to "Sign out", signout_path, method: "delete" %>
       </li>
-      <% else %>
-            <li class="menu__group"><%= link_to "Sign in", signin_path %></li>
-          <% end %>
-    </ul>
-  </nav>
-</header>
+    <% else %>
+      <li class="menu__group"><%= link_to "Sign in", signin_path %></li>
+    <% end %>
+    <li class="menu__group">
+      <%= link_to "Search channels", channels_path, method: "get" %>
+    </li>
+  </ul>
+</div>
