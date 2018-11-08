@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users
   resources :channels
   resources :subscribes
+  resources :feeds
   resources :sessions, only: [:new, :create, :destroy]
   resources :posts
 

@@ -9,13 +9,6 @@ module ApplicationHelper
     end
   end
 
-  def get_feed
-    # url = "http://feeds.bbci.co.uk/news/world/rss.xml?edition=uk#"
-    fapl = "http://premiership.ru/rss.xml"
-    feed = Feedjira::Feed.fetch_and_parse fapl
-    feed
-  end
-
 
   def show_svg(path)
     File.open("app/assets/images/#{path}", "rb") do |file|
