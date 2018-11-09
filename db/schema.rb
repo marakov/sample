@@ -35,9 +35,9 @@ ActiveRecord::Schema.define(version: 2018_10_15_081701) do
     t.integer "user_id"
   end
 
-  create_table "subscribes", id: false, force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "channel_id", null: false
+  create_table "subscribes", id: false do |t|
+    t.belongs_to :user, index: true
+    t.belongs_to :channel, index: true
   end
 
   create_table "types", force: :cascade do |t|

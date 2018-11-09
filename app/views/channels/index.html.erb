@@ -1,16 +1,13 @@
 <div class="content">
   <h1> Channels page</h1>
-  <ul>
-    <li>
-      Sport
-      <ul class="channel_list">
-        <li class="channel_item">
-          <h4 class="channel_name left">Fapl</h4>
-<!--          <div class="subscribe_button">-->
-            <%#= link_to "Subscribe", new_subscribe_path %>
-<!--          </div>-->
-        </li>
-      </ul>
-    </li>
+  <ul class="channel_list">
+    <% @channels.entries.each do |channel| %>
+      <li class="channel_item">
+        <h4 class="channel_name"><%= channel.name %></h4>
+      </li>
+    <% end %>
   </ul>
+  <!--          <div class="subscribe_button">-->
+  <%#= link_to "Subscribe", new_subscribe_path %>
+  <!--          </div>-->
 </div>

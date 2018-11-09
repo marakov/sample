@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many :posts, dependent: :destroy
+  has_many :subscribes, :dependent => :destroy
+  has_many :channels, through: :subscribes, source: :channel
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64
