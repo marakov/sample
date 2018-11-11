@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   match '/signout', to: 'sessions#destroy',     via: 'delete'
 
   match '/subscribe', to: 'subscribes#create', via: 'post'
+  match '/subscribe', to: 'subscribes#destroy', via: 'delete'
+  # match '/post', to: 'posts#delete', via: 'delete'
 
   match '/help', to: 'static_pages#help', via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'

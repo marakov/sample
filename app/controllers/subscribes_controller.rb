@@ -1,4 +1,6 @@
 class SubscribesController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def new
 
   end
@@ -8,11 +10,13 @@ class SubscribesController < ApplicationController
   end
 
   def create
-    @subscribe = Subscribe.new(params[:subscribe])
+    @subscribe = Subscribe.new(subscribe_params)
     @subscribe.save
-    respond_to do |format|
-      format.html {render nothing: true}
-    end
+  end
+
+  def destroy
+    @subscribe = Subscribe.new(subscribe_params)
+    @subscribe.destroy
   end
 
   def subscribe_params

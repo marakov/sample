@@ -57,4 +57,5 @@ ActiveRecord::Schema.define(version: 2018_10_15_081701) do
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
+  add_index :subscribes, [:user_id, :channel_id], unique: true
 end

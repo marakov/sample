@@ -6,4 +6,8 @@ class Channel < ApplicationRecord
 
   validates :name, presence: true
   validates :url, presence: true, uniqueness: {case_sensitive: true}
+
+  def has_sub(user)
+    user.channels.include? self
+  end
 end

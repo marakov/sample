@@ -2,7 +2,30 @@
   <h4 class="channel_name">
     <%= channel.name %>
   </h4>
-  <h4 class="subscribe">
-    Subscribe
-  </h4>
+  <div class="subscribe-block">
+    <a class="subscribe-button" data-count="0">
+      <svg xmlns="http://www.w3.org/2000/svg">
+        <g>
+          <rect class="plus__line1" width="2" height="12" x="5" y="0"></rect>
+          <rect class="plus__line2" width="12" height="2" x="0" y="5"></rect>
+        </g>
+      </svg>
+      <span class="subscribe-text">Subscribe</span>
+      <span class="hidden has-sub"><%= channel.has_sub current_user %></span>
+    </a>
+
+  </div>
+
+  <!--
+  <div class="subscribe">
+    <div>
+      <input type="checkbox" class="toggle" id="toggle<%= channel.id %>"/>
+      <label class="button" for="toggle<%= channel.id %>">
+      </label>
+    </div>
+    <div class="parent">
+      <div class="text sub">Subscribe Now</div>
+      <div class="text thanks">Thanks for Subscribing</div>
+    </div>
+  </div>*-->
 </li>
