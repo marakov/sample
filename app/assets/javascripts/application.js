@@ -15,3 +15,15 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
+
+
+$(document).ready(function () {
+    $('.subscribe').on('click', function () {
+        $.ajax({
+            url: '/subscribe',
+            type: 'POST',
+            data: { subscribe: { channel_id: this.parentElement.id, user_id: 1  } },
+            success: function (r) {}
+        });
+    })
+});

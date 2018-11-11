@@ -2,12 +2,12 @@ module SignedInUser
   extend ActiveSupport::Concern
 
   included do
-    before_action :signed_in_user, only: [:index, :edit, :update]
+    before_action :redirect_to_sign_in, only: [:index, :edit, :update]
   end
 
-# Before filters
+# Before actions
 
-  def signed_in_user
+  def redirect_to_sign_in
     unless signed_in?
       store_location
       redirect_to signin_url, notice: "Please sign in."

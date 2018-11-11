@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   resources :users
   resources :channels
-  resources :subscribes
   resources :feeds
   resources :sessions, only: [:new, :create, :destroy]
   resources :posts
@@ -12,7 +11,8 @@ Rails.application.routes.draw do
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
 
+  match '/subscribe', to: 'subscribes#create', via: 'post'
+
   match '/help', to: 'static_pages#help', via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
-  match '/news', to: 'static_pages#news', via: 'get'
  end

@@ -1,4 +1,6 @@
 class StaticPagesController < ApplicationController
+  include RedirectToFeeds
+
   def home
   end
 
@@ -6,8 +8,5 @@ class StaticPagesController < ApplicationController
   end
 
   def contact
-  end
-
-  def news
   end
 end
