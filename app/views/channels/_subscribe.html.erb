@@ -1,0 +1,7 @@
+<%= form_for(@user.subscribes.build(channel_id: @channel.id),
+             html: {method: :post},
+             remote: true) do |f| %>
+  <div><%= f.hidden_field :channel_id %></div>
+  <div><%= f.hidden_field :user_id %></div>
+  <%= f.submit "Subscribe", class: "subscribe-button button"%>
+<% end %>

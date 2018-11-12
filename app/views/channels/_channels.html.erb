@@ -1,0 +1,15 @@
+<ul id="channel_list" class="channel_list">
+  <% @channels.each do |channel| %>
+    <li id="<%= channel.id %>" class="channel_item">
+      <div class="hidden">
+        <%= @channel = channel %>
+      </div>
+      <h4 class="channel_name">
+        <%= channel.name %>
+      </h4>
+      <div class="subscribe-block">
+        <%= render "channels/subscribe_form" %>
+      </div>
+    </li>
+  <% end %>
+</ul>

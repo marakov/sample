@@ -1,0 +1,5 @@
+<% if current_user.subscribing?(@channel) %>
+  <%= render 'channels/unsubscribe' %>
+<% else %>
+  <%= render 'channels/subscribe' %>
+<% end %>

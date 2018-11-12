@@ -16,11 +16,11 @@
       <li class="menu__group">
         <%= link_to "Sign out", signout_path, method: "delete" %>
       </li>
+      <li class="menu__group">
+        <%= link_to "Search channels", channels_path, method: "get" %>
+      </li>
     <% else %>
       <li class="menu__group"><%= link_to "Sign in", signin_path %></li>
     <% end %>
-    <li class="menu__group">
-      <%= link_to "Search channels", channels_path, method: "get" %>
-    </li>
   </ul>
 </div>

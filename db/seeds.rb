@@ -7,6 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # TODO: comment the following insertion because of this is not a dictionary table
+
+Post.create(title: "Mourinho says United 'need to grow up'",
+            body: "We gave you the best from Mourinho at today's news conference earlier on but now here's our story on what the United boss said before Sunday's Manchester derby.",
+            user_id: 1)
+
+Post.create(title: "Mourinho says United 'need to grow up'",
+            body: "We gave you the best from Mourinho at today's news conference earlier on but now here's our story on what the United boss said before Sunday's Manchester derby.",
+            user_id: 1)
+
 Post.create(title: "Mourinho says United 'need to grow up'",
             body: "We gave you the best from Mourinho at today's news conference earlier on but now here's our story on what the United boss said before Sunday's Manchester derby.",
             user_id: 1)
@@ -22,8 +31,8 @@ Post.create(title: "Mourinho says United 'need to grow up'",
 # Channel.create(name: "FAPL", url: "http://premiership.ru/rss.xml", type_id: 1, category_id: 1)
 # Channel.create(name: "UEFA Champions League", url: "https://www.uefa.com/rssfeed/uefachampionsleague/rss.xml", type_id: 1, category_id: 1)
 # Channel.create(name: "UEFA Europe League", url: "https://ru.uefa.com/rssfeed/uefaeuropaleague/rss.xml", type_id: 1, category_id: 1)
-
-
+#
+#
 # Channel.create(name: "1", url: "1", type_id: 1, category_id: 1)
 # Channel.create(name: "2", url: "2", type_id: 1, category_id: 1)
 # Channel.create(name: "3", url: "3", type_id: 1, category_id: 1)

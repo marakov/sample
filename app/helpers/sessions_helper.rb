@@ -30,6 +30,10 @@ module SessionsHelper
     @current_user ||= User.find_by(remember_token: remember_token)
   end
 
+  def currentUserId
+    return "" if current_user == nil
+    return current_user.id
+  end
   def current_user?(user)
     user == current_user
   end

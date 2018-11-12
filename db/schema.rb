@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2018_10_15_081701) do
     t.integer "user_id"
   end
 
-  create_table "subscribes", id: false do |t|
+  create_table "subscribes" do |t|
     t.belongs_to :user, index: true
     t.belongs_to :channel, index: true
   end

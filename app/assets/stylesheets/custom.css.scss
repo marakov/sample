@@ -138,7 +138,7 @@ input[type="password"] {
   color: $button;
 }
 
-input[type="submit"] {
+.button{
   background: $button;
   border: none;
   color: white;
@@ -333,12 +333,11 @@ ul.channel_list > li {
   border: solid 1px #000000;
   background-color: #fffff0;
   margin: 5px;
-  width: 50%;
-  text-align: center;
+  width: 30%;
+  text-align: left;
 }
 
 .subscribe-block {
-  margin: 10px auto;
   width: 50%;
 }
 
@@ -348,7 +347,6 @@ ul.channel_list > li {
   font-family: inherit;
   font-size: inherit;
   font-weight: 500;
-  text-transform: uppercase;
   color: white;
   background: #e80000;
   border: none;
@@ -392,7 +390,7 @@ ul.channel_list > li {
   border-right-color: #e1e1e1;
 }
 .subscribe-button.subbed {
-  background: #777;
+  background: #4a6f4d;
 }
 .subscribe-button.subbed svg {
   width: 16px;
@@ -434,90 +432,14 @@ ul.channel_list > li {
 }
 
 
+/*Posts */
 
-//
-///*Subscribe*/
-//@import url('https://fonts.googleapis.com/css?family=Open+Sans');
-//
-//.subscribe {
-//  background: #21CDB2;
-//  //height: 100vh;
-//  display: flex;
-//  justify-content: center;
-//  align-items: center;
-//  div {
-//    display: flex;
-//    justify-content: center;
-//    align-items: center;
-//    margin: 8px;
-//  }
-//}
-//
-//.parent {
-//  position: relative;
-//  .sub {
-//    transition: all 0.5s ease-in-out;
-//  }
-//  .thanks {
-//    font-size: 13px;
-//    transition: all 0.5s ease-in-out;
-//    position: absolute;
-//    top: -5px;
-//    left: 0;
-//    opacity: 0;
-//  }
-//}
-//
-//.text {
-//  font-size: 17px;
-//  color: #F5F5F5;
-//  font-family: 'Open Sans', sans-serif;
-//  letter-spacing: 2px;
-//  text-transform: uppercase;
-//  transition: all 0.5s ease-in-out;
-//}
-//
-//.button {
-//  position: absolute;
-//  z-index: 999;
-//  width: 28px;
-//  height: 28px;
-//  background: #F9F9F9;
-//  border-radius: 10%;
-//  transition: all 0.5s ease-in-out;
-//  cursor: pointer;
-//  &:before {
-//    position: absolute;
-//    top: 13px;
-//    left: 6px;
-//    content: '';
-//    width: 16px;
-//    height: 2px;
-//    background: #21CDB2;
-//    transform: rotate(90deg);
-//  }
-//  &:after {
-//    position: absolute;
-//    top: 13px;
-//    left: 6px;
-//    content: '';
-//    width: 16px;
-//    height: 2px;
-//    background: #21CDB2;
-//  }
-//}
-//
-//#toggle:checked ~ .nav {
-//  opacity: 1;
-//  transform: translateY(10%);
-//}
-//
-//#toggle:checked ~ .button {
-//  transform: rotate(135deg);
-//  box-shadow: 0 0 0 0 transparent;
-//  border-radius: 100%;
-//}
-//
-//#toggle:checked ~ .subbed {
-//  opacity: 1;
-//}
+.posts{
+  list-style: none;
+  margin: 10px 0 0 0;
+
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+}
