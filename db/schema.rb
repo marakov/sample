@@ -18,10 +18,16 @@ ActiveRecord::Schema.define(version: 2018_10_15_081701) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "types", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "channels", force: :cascade do |t|
     t.string "name", null: false
     t.string "url", null: false
-    t.string "description",
+    t.string "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.belongs_to :category, index: true
@@ -36,15 +42,9 @@ ActiveRecord::Schema.define(version: 2018_10_15_081701) do
     t.integer "user_id"
   end
 
-  create_table "subscribes" do |t|
+  create_table "subscribes", force: :cascade do |t|
     t.belongs_to :user, index: true
     t.belongs_to :channel, index: true
-  end
-
-  create_table "types", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

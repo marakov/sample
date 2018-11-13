@@ -4,7 +4,7 @@
   <h1><%= @user.name %></h1>
   <h2><%= @user.email %></h2>
   <% if @user.posts.any? %>
-    <h3>Microposts (<%= @user.posts.count %>)</h3>
+    <h3>Посты (<%= @user.posts.count %>)</h3>
     <ol class="posts">
       <%= render @posts %>
     </ol>

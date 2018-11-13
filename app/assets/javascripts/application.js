@@ -15,35 +15,3 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
-
-
-$(document).ready(function () {
-    // var subbedClass = 'subbed';
-    // $(".subscribe-button").closest('form').on('ajax:success', function () {
-    //     var text;
-    //     var count = this.dataset.count;
-    //     console.log(count)
-    //     if (this.classList.contains(subbedClass)) {
-    //         this.classList.remove(subbedClass);
-    //         text = 'Subscribe';
-    //         count--;
-    //         console.log(text);
-    //         console.log('new count: ', count);
-    //     }
-    //     else {
-    //         this.classList.add(subbedClass);
-    //         text = 'Subscribed';
-    //         count++;
-    //         console.log(text);
-    //         console.log('new count: ', count);
-    //     }
-    //
-    //     this.querySelector('.subscribe-text').innerHTML = text;
-    //     this.dataset.count = count;
-    // });
-    //
-    //
-    // function subText(e, text) {
-    //     e.getElementsByClassName('.subscribe-text').innerHTML = text;
-    // }
-});

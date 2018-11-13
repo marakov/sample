@@ -3,5 +3,5 @@
              remote: true) do |f| %>
   <div><%= f.hidden_field :channel_id %></div>
   <div><%= f.hidden_field :user_id %></div>
-  <%= f.submit "Subscribe", class: "subscribe-button button"%>
+  <%= f.submit "Подписка", class: "subscribe-button button", data: {"disable-with": "Подписываемся..."}%>
 <% end %>

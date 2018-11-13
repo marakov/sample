@@ -1,4 +1,4 @@
-<% provide(:title, 'Sign up') %>
+<% provide(:title, 'Регистрация') %>
 <style>
   body {
     margin: 0;
@@ -7,7 +7,7 @@
 </style>
 
 <div class="sign-in">
-  <h3>Sign up</h3>
+  <h3>Регистрация</h3>
   <div class="clear"></div>
   <%= form_for(@user) do |f| %>
     <%= render 'shared/error_messages' %>
@@ -20,7 +20,7 @@
         </svg>
 
       <% end %>
-      <%= f.text_field :name, placeholder: "Nick" %>
+      <%= f.text_field :name, placeholder: "Никнейм" %>
     </div>
     <div>
       <%= f.label :email, class: "user" do %>
@@ -30,7 +30,7 @@
           </g>
         </svg>
       <% end %>
-      <%= f.text_field :email, placeholder: "Email" %>
+      <%= f.text_field :email, placeholder: "Почта" %>
     </div>
     <div>
       <%= f.label :password, class: "user" do %>
@@ -40,7 +40,7 @@
           </g>
         </svg>
       <% end %>
-      <%= f.password_field :password, placeholder: "Key" %>
+      <%= f.password_field :password, placeholder: "Ключ" %>
     </div>
     <div>
       <%= f.label :password_confirmation, class: "user" do %>
@@ -50,10 +50,10 @@
           </g>
         </svg>
       <% end %>
-      <%= f.password_field :password_confirmation, placeholder: "Confirm" %>
+      <%= f.password_field :password_confirmation, placeholder: "Подтвердить" %>
     </div>
     <div>
-      <%= f.submit "Create my account", class: "button"%>
+      <%= f.submit "Создать аккаунт", class: "button"%>
     </div>
     <div class="clear"></div>
   <% end %>

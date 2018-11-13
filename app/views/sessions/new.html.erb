@@ -1,4 +1,4 @@
-<% provide(:title, "Sign in") %>
+<% provide(:title, "Вход") %>
 <style>
   body {
     margin: 0;
@@ -7,9 +7,9 @@
 </style>
 
 <div class="sign-in">
-  <h3>Sign in</h3>
+  <h3>Вход</h3>
   <div class="button">
-    <%= link_to "Register", signup_path %>
+    <%= link_to "Зарегаться", signup_path %>
   </div>
   <div class="clear"></div>
   <%= form_for(:session, url: sessions_path) do |f| %>
@@ -21,7 +21,7 @@
           </g>
         </svg>
       <% end %>
-      <%= f.text_field :email, placeholder: "Email.." %>
+      <%= f.text_field :email, placeholder: "Почта.." %>
     </div>
 
     <div>
@@ -32,10 +32,10 @@
           </g>
         </svg>
       <% end %>
-      <%= f.password_field :password, placeholder: "Key.." %>
+      <%= f.password_field :password, placeholder: "Ключ.." %>
     </div>
     <div>
-      <%= f.submit "Sign in", class: "button" %>
+      <%= f.submit "Войти", class: "button" %>
     </div>
     <div class="radio-check">
       <input type="radio" class="radio-no" id="no" name="remember" value="no" checked>
@@ -44,8 +44,8 @@
       <label for="yes"><i class="fa fa-check"></i></label>
       <span class="switch-selection"></span>
     </div>
-    <span class="check-label">Remember me</span>
-    <span class="forgot-label">Lost your password?</span>
+    <span class="check-label">Запомнить</span>
+    <span class="forgot-label">Потеряли ключ?</span>
     <div class="clear"></div>
   <% end %>
 </div>

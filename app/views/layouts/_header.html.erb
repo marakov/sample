@@ -1,26 +1,26 @@
 <div class="header">
   <ul class="menu__list">
     <li class="menu__group">
-      <%= link_to "News", feeds_path %>
-    </li>
-    <li class="menu__group">
-      <%= link_to "Help", help_path %>
+      <%= link_to "Новости", feeds_path %>
     </li>
     <% if signed_in? %>
       <li class="menu__group">
-        <%= link_to "Profile", current_user %>
+        <%= link_to "Мой профиль", current_user %>
       </li>
       <li class="menu__group">
-        <%= link_to "Users", users_path %>
+        <%= link_to "Пользователи", users_path %>
       </li>
       <li class="menu__group">
-        <%= link_to "Sign out", signout_path, method: "delete" %>
+        <%= link_to "Каналы", channels_path, method: "get" %>
       </li>
       <li class="menu__group">
-        <%= link_to "Search channels", channels_path, method: "get" %>
+        <%= link_to "Выйти", signout_path, method: "delete" %>
       </li>
     <% else %>
-      <li class="menu__group"><%= link_to "Sign in", signin_path %></li>
+      <li class="menu__group"><%= link_to "Войти", signin_path %></li>
     <% end %>
+    <li class="menu__group">
+      <%= link_to "Помощь", help_path %>
+    </li>
   </ul>
 </div>

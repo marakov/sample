@@ -10,7 +10,7 @@ module SignedInUser
   def redirect_to_sign_in
     unless signed_in?
       store_location
-      redirect_to signin_url, notice: "Please sign in."
+      redirect_to signin_url, notice: "Пожалуйста, залогиньтесь"
     end
   end
 end
