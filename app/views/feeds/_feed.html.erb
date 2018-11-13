@@ -1,13 +1,16 @@
-<li class="news_item">
-  <img class="left" src="<%= "#{feed.image}" %>">
-  <div class="right">
-    <h3>
-      <a href="<%= "#{feed.url}" %>">
-        <%= "#{feed.title}" %>
-      </a>
-    </h3>
-    <p>
-      <%= "#{feed.summary}" %>
-    </p>
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" data-aos="fade-right">
+  <!--    <div class="col-lg-6 col-xs-12">-->
+  <!--      <img class="left" alt="" width="100%" src="<%#= "#{@feed.image}" %>">-->
+  <!--    </div>-->
+  <div class="col-lg-12 col-xs-12">
+    <div class="blog-column">
+      <span><%= feed.title %></span>
+      <ul class="blog-detail list-inline">
+        <li><i class="fa fa-user"></i><%= @channel.name %></li>
+        <li><i class="fa fa-clock-o"></i><%= convertDate feed.published %></li>
+      </ul>
+      <p><%= feed.summary %></p>
+      <a href="<%= feed.url %>">Read More</a>
+    </div>
   </div>
-</li>
+</div>

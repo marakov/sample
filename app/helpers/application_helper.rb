@@ -15,4 +15,8 @@ module ApplicationHelper
       raw file.read
     end
   end
+
+  def convertDate(date)
+    DateFormat.change_to(date, "ONLY_DATE")
+  end
 end

@@ -14,8 +14,8 @@ class SubscribesController < ApplicationController
     if @subscribe.save
       respond_to do |format|
         @channels = Channel.all
-        @channel = Channel.find_by(params[:channel_id])
-        @user = User.find_by(params[:user_id])
+        @channel = Channel.find_by(id: params[:subscribe][:channel_id])
+        @user = User.find_by(id: params[:subscribe][:user_id])
         format.html
         format.js {render :action => "sub_form"}
       end
@@ -26,13 +26,19 @@ class SubscribesController < ApplicationController
 
   def destroy
     # Subscribe.find_by(params[:user_id], params[:channel_id]).destroy!
-    Subscribe.find(params[:id]).destroy!
-    respond_to do |format|
-      @channels = Channel.all
-      @channel = Channel.find_by(params[:channel_id])
-      @user = User.find_by(params[:user_id])
-      format.html
-      format.js {render :action => "sub_form"}
+    @subscribe = Subscribe.find(params[:id])
+    user_id = @subscribe.user_id
+    channel_id = @subscribe.channel_id
+    if @subscribe.destroy!
+      respond_to do |format|
+        @channels = Channel.all
+        @channel = Channel.find_by(id: channel_id)
+        @user = User.find_by(id: user_id)
+        format.html
+        format.js {render :action => "sub_form"}
+      end
+    else
+      redirect_to root_path
     end
   end
 

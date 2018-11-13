@@ -1,5 +1,7 @@
-<% if current_user.subscribing?(@channel) %>
-  <%= render 'channels/unsubscribe' %>
-<% else %>
-  <%= render 'channels/subscribe' %>
-<% end %>
+<div class="col-lg-12" id="sub-form<%=@channel.id  %>">
+  <% if current_user.subscribing?(@channel) %>
+    <%= render 'channels/unsubscribe', :user => current_user %>
+  <% else %>
+    <%= render 'channels/subscribe', :user => current_user %>
+  <% end %>
+</div>

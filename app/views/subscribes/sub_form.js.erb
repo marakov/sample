@@ -1,2 +1,3 @@
 console.log("success");
-$('#channel_list').html('<%= escape_javascript(render :partial => 'channels/channels') %>');
+var c = "#sub-form" + <%= @channel.id %>;
+$(c).html('<%= escape_javascript(render :partial => 'channels/subscribe_form') %>');

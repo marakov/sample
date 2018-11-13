@@ -138,7 +138,7 @@ input[type="password"] {
   color: $button;
 }
 
-.button{
+.button {
   background: $button;
   border: none;
   color: white;
@@ -262,10 +262,10 @@ input[type="radio"] {
   list-style-type: none;
 }
 
-.left {
-  width: 30%;
-  float: left;
-}
+//.left {
+//  width: 30%;
+//  float: left;
+//}
 
 .right {
   width: 69%;
@@ -323,7 +323,11 @@ input[type="radio"] {
 
 /* Channels */
 
-ul.channel_list > li {
+#channel_list {
+  padding-inline-start: 0;
+}
+
+#channel_list > li {
   display: inline-block;
   /* Располагаем элементы по горизонтали */
   list-style: none;
@@ -337,8 +341,14 @@ ul.channel_list > li {
   text-align: left;
 }
 
-.subscribe-block {
-  width: 50%;
+.channel_name, .channel_description, .subscribe-button {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.channel_name{
+  font-size: 1.5em;
+  display: block
 }
 
 .subscribe-button {
@@ -358,10 +368,12 @@ ul.channel_list > li {
   -webkit-transition-duration: 0.2s;
   transition-duration: 0.2s;
 }
+
 .subscribe-button:active {
   background: #de0000;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2), 0 1px 4px rgba(0, 0, 0, 0.14);
 }
+
 .subscribe-button:after {
   content: attr(data-count);
   position: absolute;
@@ -375,6 +387,7 @@ ul.channel_list > li {
   background: #e1e1e1;
   border-radius: 3px;
 }
+
 .subscribe-button:before {
   content: '';
   display: block;
@@ -389,20 +402,25 @@ ul.channel_list > li {
   border-left-width: 0;
   border-right-color: #e1e1e1;
 }
+
 .subscribe-button.subbed {
   background: #4a6f4d;
 }
+
 .subscribe-button.subbed svg {
   width: 16px;
 }
+
 .subscribe-button.subbed svg .plus__line1 {
   -webkit-transform: translate(14px, 0) rotate(45deg) translate(-5px, 0) scaleY(1.16667);
   transform: translate(14px, 0) rotate(45deg) translate(-5px, 0) scaleY(1.16667);
 }
+
 .subscribe-button.subbed svg .plus__line2 {
   -webkit-transform: translate(2px, 5px) rotate(45deg) scaleX(0.5) translate(0px, -5px);
   transform: translate(2px, 5px) rotate(45deg) scaleX(0.5) translate(0px, -5px);
 }
+
 .subscribe-button svg {
   display: inline-block;
   width: 12px;
@@ -412,6 +430,7 @@ ul.channel_list > li {
   -webkit-transition: width 0.25s;
   transition: width 0.25s;
 }
+
 .subscribe-button svg .plus__line1,
 .subscribe-button svg .plus__line2 {
   -webkit-transition: -webkit-transform 0.25s;
@@ -419,22 +438,24 @@ ul.channel_list > li {
   transition: transform 0.25s;
   transition: transform 0.25s, -webkit-transform 0.25s;
 }
+
 .subscribe-button svg .plus__line1 {
   -webkit-transform-origin: 0 0;
   transform-origin: 0 0;
 }
+
 .subscribe-button svg .plus__line2 {
   -webkit-transform-origin: 0 0;
   transform-origin: 0 0;
 }
+
 .subscribe-button * {
   vertical-align: middle;
 }
 
-
 /*Posts */
 
-.posts{
+.posts {
   list-style: none;
   margin: 10px 0 0 0;
 

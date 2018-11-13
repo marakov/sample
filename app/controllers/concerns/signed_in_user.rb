@@ -2,7 +2,7 @@ module SignedInUser
   extend ActiveSupport::Concern
 
   included do
-    before_action :redirect_to_sign_in, only: [:index, :edit, :update]
+    before_action :redirect_to_sign_in, only: [:index, :edit, :update, :show]
   end
 
 # Before actions

@@ -78,6 +78,7 @@ GEM
     coffee-script-source (1.8.0)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
+    date_format (0.3.3)
     debase (0.2.2)
       debase-ruby_core_source (>= 0.10.2)
     debase-ruby_core_source (0.10.3)
@@ -238,6 +239,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   coffee-rails
   coffee-script-source (= 1.8.0)
+  date_format
   debase
   execjs (~> 2.2.2)
   factory_bot

@@ -1,0 +1,28 @@
+<% provide(:title, @channel.name) %>
+<div class="content">
+  <div class="blog">
+    <div class="row">
+      <div class="col-lg-12">
+        <h2><span class="ion-minus"/><%= @channel.name %><span class="ion-minus"/></h2>
+        <h4><span class="ion-minus"/><%= @channel.category.name %><span class="ion-minus"/></h4>
+        <p style="margin-left: 20px;"><%= @channel.description %></p><br>
+        <div class="col-lg-3 col-sm-offset-9">
+          <%= render "channels/subscribe_form", :user => current_user %>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <% i = 0 %>
+    <% while i < @feeds.entries.size %>
+      <div class="row">
+        <%= render "feeds/feed", :feed => @feeds.entries[i] %>
+        <% i += 1 %>
+        <% if (i < @feeds.entries.size) %>
+          <%= render "feeds/feed", :feed => @feeds.entries[i] %>
+        <% end %>
+      </div>
+      <div style="margin:40px 0px;"></div>
+      <% i += 1 %>
+    <% end %>
+  </div>
+</div>

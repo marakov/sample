@@ -1,6 +1,6 @@
 class Channel < ApplicationRecord
-  has_one :type;
-  has_one :category;
+  belongs_to :type;
+  belongs_to :category
   has_many :subscribes, :dependent => :destroy
   has_many :users, through: :subscribes, source: :user
 
@@ -10,15 +10,6 @@ class Channel < ApplicationRecord
   def has_sub(user)
     user.channels.include? self
   end
-
-  # def getSubscribeText(user)
-  #   return "Subscribed" if has_sub user
-  #   return "Subscribe"
-  # end
-  #
-  # def getSubbedClass(user)
-  #   return "subbed" if has_sub user
-  # end
 
   def getSubCount
     return self.subscribes.size
