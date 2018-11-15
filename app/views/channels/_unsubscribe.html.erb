@@ -1,5 +1,5 @@
 <%= form_for(user.subscribes.find_by(user_id: user.id, channel_id: @channel.id),
              html: {method: :delete},
              remote: true) do |f| %>
-  <%= f.submit "Атписка", class: "subscribe-button subbed button", data: {"disable-with": "Атписываемся..."}%>
+  <%= f.submit "Атписка", class: "subscribe-button subbed button pull-right col-lg-8"%>
 <% end %>

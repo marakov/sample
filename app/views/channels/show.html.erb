@@ -6,7 +6,7 @@
         <h2><span class="ion-minus"/><%= @channel.name %><span class="ion-minus"/></h2>
         <h4><span class="ion-minus"/><%= @channel.category.name %><span class="ion-minus"/></h4>
         <p style="margin-left: 20px;"><%= @channel.description %></p><br>
-        <div class="col-lg-3 col-sm-offset-9">
+        <div class="col-lg-5 pull-right">
           <%= render "channels/subscribe_form", :user => current_user %>
         </div>
       </div>

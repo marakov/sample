@@ -1,13 +1,18 @@
-<ul id="channel_list">
-  <% @channels.each do |channel| %>
-    <li id="<%= channel.id %>" class="channel_item">
-      <div class="hidden">
-        <%= @channel = channel %>
-      </div>
-      <%= link_to channel.name, channel, class: "channel_name" %>
-      <h4><%= channel.category.name %></h4>
-      <p class="channel_description"><%= channel.description %></p>
-      <%= render "channels/subscribe_form" %>
-    </li>
+<% i = 0 %>
+<div id="channel_list">
+  <% while i < @channels.entries.size %>
+    <div class="row">
+      <%= render "channels/channel", :channel => @channels.entries[i] %>
+      <% i += 1 %>
+      <% if (i < @channels.entries.size) %>
+        <%= render "channels/channel", :channel => @channels.entries[i] %>
+      <% end %>
+      <% i += 1 %>
+      <% if (i < @channels.entries.size) %>
+        <%= render "channels/channel", :channel => @channels.entries[i] %>
+      <% end %>
+    </div>
+    <div style="margin:40px 0px;"></div>
+    <% i += 1 %>
   <% end %>
-</ul>
+</div>

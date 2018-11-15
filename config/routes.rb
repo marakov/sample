@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root  'static_pages#home'
 
   resources :users
-  resources :channels
+  resources :channels, only: [:index, :show]
   resources :feeds
   resources :subscribes
   resources :sessions, only: [:new, :create, :destroy]
@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
+  match '/channels', to: 'channels#search',     via: 'post'
 
-  # match '/subscribe', to: 'subscribes#create', via: 'post'
   # match '/subscribe', to: 'subscribes#destroy', via: 'delete'
   # match '/post', to: 'posts#delete', via: 'delete'
 

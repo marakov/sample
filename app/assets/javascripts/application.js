@@ -15,3 +15,45 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
+
+$(document).ready(function () {
+    $(function () {
+        var minlength = 3;
+        $("#channelNameSearch").keyup(function () {
+            value = $(this).val();
+            if (value.length >= minlength) {
+                channelsAjaxSearch()
+            } else if (value.length == 0){
+                channelsAjaxSearch()
+            }
+
+        })
+        $("#channelUriSearch").keyup(function () {
+            value = $(this).val();
+            if (value.length >= minlength) {
+                channelsAjaxSearch()
+            } else if (value.length == 0){
+                channelsAjaxSearch()
+            }
+        })
+
+    })
+    function buildChannelSearchParams() {
+        var name = $("#channelNameSearch").val();
+        var uri = $("#channelUriSearch").val();
+        var channel = {channel: {name: name, uri: uri}}
+        return channel;
+    }
+    function channelsAjaxSearch() {
+        var channel = buildChannelSearchParams();
+        $.ajax({
+            url: "/channels",
+            type: "POST",
+            data: JSON.stringify(channel),
+            contentType: "application/json",
+            dataType: "script",
+            success: function (r) {
+            }
+        })
+    }
+});
