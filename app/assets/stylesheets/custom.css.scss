@@ -28,18 +28,19 @@ html, body {
   padding: 0;
 }
 
-.header {
+.fixed {
   height: 100%;
   width: 20%;
   padding: 0;
-  background-color: $dark;
   position: fixed; /* Make it stick, even on scroll */
   overflow: auto; /* Enable scrolling if the sidenav has too much content */
-  font-size: 1.3em;
-  list-style-type: none;
-  border-right: solid $white 2px;
 }
-
+.header{
+  background-color: $dark;
+  border-right: solid $white 2px;
+  list-style-type: none;
+  font-size: 1.3em;
+}
 .menu__list {
   margin: 40% 0;
   padding: 0;
@@ -82,7 +83,6 @@ html, body {
   list-style-type: none;
 }
 
-
 .right {
   width: 69%;
   margin-left: 5px;
@@ -106,11 +106,11 @@ html, body {
 }
 
 .content {
-  width: 50%;
+  margin-left: 23%;
+  width: 55%;
   height: auto;
-  margin: 0 auto;
+  float: left;
   padding: 5px;
-
 }
 
 .alert {
@@ -162,7 +162,8 @@ html, body {
   white-space: nowrap;
   overflow: hidden;
 }
-.channel_name{
+
+.channel_name {
   font-size: 1.5em;
   display: block
 }

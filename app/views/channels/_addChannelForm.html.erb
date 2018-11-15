@@ -1,0 +1,24 @@
+<div class="fixed right-side-form">
+  <h3>Не нашли нужный канал?</h3>
+  <h3>Добавьте его!</h3>
+
+  <%= form_for(@newChannel) do |f| %>
+    <div>
+      <%= f.text_field :name, placeholder: "Название" %>
+    </div>
+    <div>
+      <%= f.text_field :description, placeholder: "Описание" %>
+    </div>
+    <div>
+      <%= f.text_field :url, placeholder: "RSS ссылка" %>
+    </div>
+
+    <div>
+      <%= f.select :category, options_for_select(@categories.map {|c| [c.name, c.id]}) %>
+    </div>
+    <div>
+      <%= f.submit "Добавить", class: "button" %>
+    </div>
+    <div class="clear"></div>
+  <% end %>
+</div>

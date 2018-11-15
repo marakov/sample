@@ -4,6 +4,8 @@ class ChannelsController < ApplicationController
 
   def index
     @channels = Channel.all
+    @newChannel = Channel.new
+    @categories = Category.all
   end
 
   def show
