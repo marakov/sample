@@ -22,4 +22,39 @@ class ChannelsController < ApplicationController
     end
   end
 
+
+  def create
+    @channel = Channel.new(channel_params)
+    if addChannel?
+      respond_to do |format|
+        if @channel.save
+          @channels = Channel.all
+          format.html
+          format.js {render :action => "update_channels"}
+        else
+          format.html
+          format.js {render :action => "cantAddChannel"}
+        end
+      end
+    else
+      if checkRssLinkAction?
+        @rssCheck = @channel.checkRssLink?
+        respond_to do |format|
+          format.js {render :action => "rssCheck"}
+        end
+      end
+    end
+  end
+
+  def channel_params
+    params.require(:channel).permit(:name, :url, :description, :category_id, :type_id)
+  end
+
+  def checkRssLinkAction?
+    params[:commit] == "Проверить ссылку"
+  end
+
+  def addChannel?
+    params[:commit] == "Добавить"
+  end
 end

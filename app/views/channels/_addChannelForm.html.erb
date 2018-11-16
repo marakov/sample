@@ -2,23 +2,22 @@
   <h3>Не нашли нужный канал?</h3>
   <h3>Добавьте его!</h3>
 
-  <%= form_for(@newChannel) do |f| %>
-    <div>
-      <%= f.text_field :name, placeholder: "Название" %>
-    </div>
-    <div>
-      <%= f.text_field :description, placeholder: "Описание" %>
-    </div>
-    <div>
-      <%= f.text_field :url, placeholder: "RSS ссылка" %>
-    </div>
+  <div class="form-group col-lg-9">
+    <%= form_for(@newChannel, remote: true) do |f| %>
+      <%= f.text_field :name, placeholder: "Название", class: "form-control mt-3" %>
+      <%= f.text_area :description, placeholder: "Описание", class: "form-control mt-3" %>
+      <%= f.text_field :url, placeholder: "RSS ссылка", class: "form-control mt-3" %>
+      <%= f.hidden_field :type_id, value: "1" %>
+      <%= f.select(:category_id, options_for_select(@categories.map {|c| [c.name, c.id]}), {}, {class: "form-control mt-3 h-100"}) %>
+      <div class="form-inline">
+        <%= f.submit "Добавить", class: "btn btn-primary mt-3" %>
+        <%= f.submit "Проверить ссылку", class: "btn btn-primary mt-3 ml-4" %>
+        <%#= link_to "Проверить кнопку", checkRss_path, method: :post, :remote => true, class: 'btn btn-primary mt-3 ml-4', :url => url %>
+      </div>
 
-    <div>
-      <%= f.select :category, options_for_select(@categories.map {|c| [c.name, c.id]}) %>
-    </div>
-    <div>
-      <%= f.submit "Добавить", class: "button" %>
-    </div>
-    <div class="clear"></div>
-  <% end %>
+      <span id="channelValidation"/>
+      <div class="clear"></div>
+    <% end %>
+  </div>
+
 </div>

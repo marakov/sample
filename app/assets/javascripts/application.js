@@ -47,7 +47,7 @@ $(document).ready(function () {
     function channelsAjaxSearch() {
         var channel = buildChannelSearchParams();
         $.ajax({
-            url: "/channels",
+            url: "/channels/search",
             type: "POST",
             data: JSON.stringify(channel),
             contentType: "application/json",

@@ -1,0 +1,5 @@
+if (<%= @rssCheck %>) {
+    $('#channelValidation').replaceWith('<%= escape_javascript(render :partial => 'channels/goodRss') %>')
+} else {
+    $('#channelValidation').replaceWith('<%= escape_javascript(render :partial => 'channels/badRss') %>')
+}
