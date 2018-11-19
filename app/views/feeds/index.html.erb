@@ -4,7 +4,7 @@
     <% @feeds.entries.each do |feed| %>
       <% feed.entries.each do |f| %>
         <li class="news_item">
-          <img class="left" alt="img" src="<%= "#{f.image}" %>">
+<!--          <img class="left" alt="img" src="<%#= "#{f.image}" %>">-->
           <div class="right">
             <h3>
               <a href="<%= "#{f.url}" %>">

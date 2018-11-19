@@ -2,7 +2,7 @@
   <h3>Не нашли нужный канал?</h3>
   <h3>Добавьте его!</h3>
 
-  <div class="form-group col-lg-9">
+  <div class="form-group col-lg-12">
     <%= form_for(@newChannel, remote: true) do |f| %>
       <%= f.text_field :name, placeholder: "Название", class: "form-control mt-3" %>
       <%= f.text_area :description, placeholder: "Описание", class: "form-control mt-3" %>

@@ -10,15 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_15_081701) do
+ActiveRecord::Schema.define(version: 2018_11_18_104400) do
 
   create_table "categories", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "types", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -30,8 +24,20 @@ ActiveRecord::Schema.define(version: 2018_10_15_081701) do
     t.string "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.belongs_to :category, index: true
-    t.belongs_to :type, index: true
+    t.integer "category_id"
+    t.integer "type_id"
+    t.index ["category_id"], name: "index_channels_on_category_id"
+    t.index ["type_id"], name: "index_channels_on_type_id"
+  end
+
+  create_table "feeds", force: :cascade do |t|
+    t.string "title"
+    t.text "summary"
+    t.string "url"
+    t.integer "channel_id"
+    t.index ["channel_id"], name: "index_feeds_on_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "posts", force: :cascade do |t|
@@ -43,8 +49,17 @@ ActiveRecord::Schema.define(version: 2018_10_15_081701) do
   end
 
   create_table "subscribes", force: :cascade do |t|
-    t.belongs_to :user, index: true
-    t.belongs_to :channel, index: true
+    t.integer "user_id"
+    t.integer "channel_id"
+    t.index ["channel_id"], name: "index_subscribes_on_channel_id"
+    t.index ["user_id", "channel_id"], name: "index_subscribes_on_user_id_and_channel_id", unique: true
+    t.index ["user_id"], name: "index_subscribes_on_user_id"
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -58,5 +73,4 @@ ActiveRecord::Schema.define(version: 2018_10_15_081701) do
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
-  add_index :subscribes, [:user_id, :channel_id], unique: true
 end
