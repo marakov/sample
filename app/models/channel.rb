@@ -3,6 +3,7 @@ class Channel < ApplicationRecord
   belongs_to :category
   has_many :subscribes, :dependent => :destroy
   has_many :users, through: :subscribes, source: :user
+  has_many :feeds, dependent: :destroy
 
   validates :name, presence: true, uniqueness: {case_sensitive: true}
   validates :url, presence: true, uniqueness: {case_sensitive: true}

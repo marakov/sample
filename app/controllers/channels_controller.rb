@@ -10,7 +10,11 @@ class ChannelsController < ApplicationController
 
   def show
     @channel = Channel.find(params[:id])
-    @feeds = Feedjira::Feed.fetch_and_parse @channel.url
+    s = "select * from feeds where channel_id = " + @channel.id.to_s
+    @feeds = Feed.find_by_sql s
+    if (@feeds==nil)
+      @feeds = Feedjira::Feed.fetch_and_parse @channel.url
+    end
   end
 
   def search
@@ -29,6 +33,7 @@ class ChannelsController < ApplicationController
       respond_to do |format|
         if @channel.save
           @channels = Channel.all
+          RssWorker.perform_async
           format.html
           format.js {render :action => "update_channels"}
         else

@@ -1,1 +1,4 @@
 $("#channel_list").replaceWith('<%= escape_javascript(render :partial => 'channels/channels') %>');
+$("#new_channel")[0].reset()
+$('#channelValidation').replaceWith('<%= escape_javascript(render :partial => 'channels/channelAddedSuccessfully') %>')
+

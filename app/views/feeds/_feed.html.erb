@@ -7,7 +7,7 @@
       <span><%= feed.title %></span>
       <ul class="blog-detail list-inline">
         <li><i class="fa fa-user"></i><%= @channel.name %></li>
-        <li><i class="fa fa-clock-o"></i><%= convertDate feed.published %></li>
+        <li><i class="fa fa-clock-o"></i><%= convertDate feed.created_at %></li>
       </ul>
       <p><%= feed.summary %></p>
       <a href="<%= feed.url %>">Read More</a>
