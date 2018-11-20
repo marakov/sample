@@ -12,7 +12,7 @@ class ChannelsController < ApplicationController
     @channel = Channel.find(params[:id])
     s = "select * from feeds where channel_id = " + @channel.id.to_s
     @feeds = Feed.find_by_sql s
-    if (@feeds==nil)
+    if (@feeds==nil or  @feeds.entries.size == 0)
       @feeds = Feedjira::Feed.fetch_and_parse @channel.url
     end
   end
