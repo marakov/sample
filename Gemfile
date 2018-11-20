@@ -7,8 +7,6 @@ gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier'
 gem 'bcrypt'
-gem 'coffee-script-source', '1.8.0'
-gem 'coffee-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'execjs', '~> 2.2.2'
@@ -43,3 +41,7 @@ group :production do
   gem 'rails_12factor'
 end
 
+group :assets do
+  gem 'coffee-script-source', '1.8.0'
+  gem 'coffee-rails'
+end

@@ -15,10 +15,10 @@
     <% i = 0 %>
     <% while i < @feeds.entries.size %>
       <div class="row">
-        <%= render "feeds/feed", :feed => @feeds.entries[i] %>
+        <%= render "feeds/feed_on_channel_page", :feed => @feeds.entries[i] %>
         <% i += 1 %>
         <% if (i < @feeds.entries.size) %>
-          <%= render "feeds/feed", :feed => @feeds.entries[i] %>
+          <%= render "feeds/feed_on_channel_page", :feed => @feeds.entries[i] %>
         <% end %>
       </div>
       <div style="margin:40px 0px;"></div>

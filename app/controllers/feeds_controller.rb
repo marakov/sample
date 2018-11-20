@@ -2,18 +2,13 @@ class FeedsController < ApplicationController
   include SignedInUser
 
   def index
-    @feeds = get_feeds
-  end
-
-  def get_feeds
     @current_user = current_user
-    @channelsIds = Array[]
-    @feeds = Array[]
-    @current_user.channels.entries.each_with_index do |channel, index|
-      s = "select * from feeds where channel_id = " + channel.id.to_s
-      @feeds[index] = Feed.find_by_sql s
+    ids = @current_user.channels.entries.map(&:id)
+    @feeds = Feed.where(channel_id: ids).paginate(page: params[:page], per_page: 5).order('created_at Desc')
+    respond_to do |format|
+      format.html
+      format.js
     end
-    @feeds
   end
 
   def get_feeds_old

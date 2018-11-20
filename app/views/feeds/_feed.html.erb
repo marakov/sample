@@ -1,16 +1,12 @@
-<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" data-aos="fade-right">
-  <!--    <div class="col-lg-6 col-xs-12">-->
-  <!--      <img class="left" alt="" width="100%" src="<%#= "#{@feed.image}" %>">-->
-  <!--    </div>-->
-  <div class="col-lg-12 col-xs-12">
-    <div class="blog-column">
-      <span><%= feed.title %></span>
-      <ul class="blog-detail list-inline">
-        <li><i class="fa fa-user"></i><%= @channel.name %></li>
-        <li><i class="fa fa-clock-o"></i><%= convertDate feed.created_at %></li>
-      </ul>
-      <p><%= feed.summary %></p>
-      <a href="<%= feed.url %>">Read More</a>
-    </div>
+<div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12" data-aos="fade-right">
+  <div class="blog-column">
+    <span><%= feed.title %></span>
+    <ul class="blog-detail list-inline">
+      <li><i class="fa fa-user"></i><%= feed.channel.name %></li>
+      <li><i class="fa fa-clock-o"></i><%= convertDate feed.created_at %></li>
+    </ul>
+    <p><%= feed.summary %></p>
+    <a href="<%= feed.url %>">Read More</a>
   </div>
+  <hr class="col-lg-12" style="border-top: 1px solid #eeeeee"/>
 </div>
