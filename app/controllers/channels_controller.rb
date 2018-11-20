@@ -18,7 +18,8 @@ class ChannelsController < ApplicationController
   end
 
   def search
-    s = "select * from channels where name LIKE '%" + params[:channel][:name] + "%' and url LIKE '%" + params[:channel][:uri] + "%'"
+    s = "select * from channels where LOWER(name) LIKE LOWER('%" + params[:channel][:name] +
+        "%') and LOWER(url) LIKE LOWER('%" + params[:channel][:uri] + "%')"
     @channels = Channel.find_by_sql(s)
     respond_to do |format|
       format.html
@@ -35,7 +36,7 @@ class ChannelsController < ApplicationController
           @channels = Channel.all
           RssWorker.perform_async
           format.html
-          format.js {render :action => "update_channels"}
+          format.js {render :action => "afterChannelCreation"}
         else
           format.html
           format.js {render :action => "cantAddChannel"}
