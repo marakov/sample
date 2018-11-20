@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
   root 'static_pages#home'
+  mount Sidekiq::Web => "/sidekiq"
 
   resources :users
   resources :channels, only: [:index, :show, :create]
