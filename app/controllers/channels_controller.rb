@@ -11,9 +11,9 @@ class ChannelsController < ApplicationController
   def show
     @channel = Channel.find(params[:id])
     s = "select * from feeds where channel_id = " + @channel.id.to_s
-    @feeds = Feed.find_by_sql s
+    @feeds = Feed.where(channel_id: @channel.id).paginate(page: params[:page], per_page: 10).order('created_at Desc')
     @fromRss = false
-    if (@feeds==nil or  @feeds.entries.size == 0)
+    if (@feeds == nil or @feeds.entries.size == 0)
       @feeds = Feedjira::Feed.fetch_and_parse @channel.url
       @fromRss = true
     end
