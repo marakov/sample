@@ -1,0 +1,172 @@
+Index: app/views/subscribes/index.html.erb
+===================================================================
+--- app/views/subscribes/index.html.erb	(revision f4925fd4e05c242d0e01cb7c04a6bda5775007b8)
++++ app/views/subscribes/index.html.erb	(revision f4925fd4e05c242d0e01cb7c04a6bda5775007b8)
+@@ -1,0 +0,0 @@
+Index: app/models/user.rb
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/models/user.rb	(revision f4925fd4e05c242d0e01cb7c04a6bda5775007b8)
++++ app/models/user.rb	(date 1542791962297)
+@@ -11,6 +11,10 @@
+   has_many :subscribes, :dependent => :destroy
+   has_many :channels, through: :subscribes, source: :channel
+ 
++
++  has_many :likes, :dependent => :destroy
++  has_many :feeds, through: :likes, source: :feed
++
+   def User.new_remember_token
+     SecureRandom.urlsafe_base64
+   end
+Index: db/migrate/20181121092043_create_likes.rb
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- db/migrate/20181121092043_create_likes.rb	(date 1542792351949)
++++ db/migrate/20181121092043_create_likes.rb	(date 1542792351949)
+@@ -0,0 +1,11 @@
++class CreateLikes < ActiveRecord::Migration[5.2]
++  def change
++    create_table :likes do |t|
++      t.integer :user_id
++      t.integer :feed_id
++
++      t.timestamps
++    end
++    add_index :likes, [:user_id, :feed_id], unique: true
++  end
++end
+Index: app/models/like.rb
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/models/like.rb	(date 1542792158455)
++++ app/models/like.rb	(date 1542792158455)
+@@ -0,0 +1,4 @@
++class Like < ApplicationRecord
++  belongs_to :user
++  belongs_to :feed
++end
+Index: app/controllers/subscribes_controller.rb
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/controllers/subscribes_controller.rb	(revision f4925fd4e05c242d0e01cb7c04a6bda5775007b8)
++++ app/controllers/subscribes_controller.rb	(date 1542792699623)
+@@ -5,10 +5,6 @@
+ 
+   end
+ 
+-  def index
+-    @subscribes = Subscribe.paginate(page: params[:page])
+-  end
+-
+   def create
+     @subscribe = Subscribe.new(subscribe_params)
+     if @subscribe.save
+Index: app/models/feed.rb
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/models/feed.rb	(revision f4925fd4e05c242d0e01cb7c04a6bda5775007b8)
++++ app/models/feed.rb	(date 1542791962288)
+@@ -1,6 +1,7 @@
+ class Feed < ApplicationRecord
+   validates :url, presence: true, uniqueness: {case_sensitive: true}
+-
++  has_many :likes, :dependent => :destroy
++  has_many :users, through: :likes, source: :user
+   belongs_to :channel
+ 
+   self.per_page = 10
+Index: app/controllers/likes_controller.rb
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/controllers/likes_controller.rb	(date 1542792699634)
++++ app/controllers/likes_controller.rb	(date 1542792699634)
+@@ -0,0 +1,42 @@
++class LikesController < ApplicationController
++  skip_before_action :verify_authenticity_token
++
++  def new
++
++  end
++
++  def create
++    @like = Like.new(like_params)
++    if @like.save
++      respond_to do |format|
++        @feed = Feed.find_by(id: params[:like][:feed_id])
++        @user = User.find_by(id: params[:like][:user_id])
++        format.html
++        format.js {render :action => "like_form"}
++      end
++    else
++      redirect_to root_path
++    end
++  end
++
++  def destroy
++    @like = Subscribe.find(params[:id])
++    user_id = @subscribe.user_id
++    channel_id = @subscribe.channel_id
++    if @subscribe.destroy!
++      respond_to do |format|
++        @channels = Channel.all
++        @channel = Channel.find_by(id: channel_id)
++        @user = User.find_by(id: user_id)
++        format.html
++        format.js {render :action => "like_form"}
++      end
++    else
++      redirect_to root_path
++    end
++  end
++
++  def like_params
++    params.require(:subscribe).permit(:user_id, :feed_id)
++  end
++end
+Index: db/schema.rb
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- db/schema.rb	(revision f4925fd4e05c242d0e01cb7c04a6bda5775007b8)
++++ db/schema.rb	(date 1542792375168)
+@@ -10,7 +10,7 @@
+ #
+ # It's strongly recommended that you check this file into your version control system.
+ 
+-ActiveRecord::Schema.define(version: 2018_11_18_104400) do
++ActiveRecord::Schema.define(version: 2018_11_21_092043) do
+ 
+   create_table "categories", force: :cascade do |t|
+     t.string "name", null: false
+@@ -35,9 +35,17 @@
+     t.text "summary"
+     t.string "url"
+     t.integer "channel_id"
++    t.datetime "created_at", null: false
++    t.datetime "updated_at", null: false
+     t.index ["channel_id"], name: "index_feeds_on_type_id"
++  end
++
++  create_table "likes", force: :cascade do |t|
++    t.integer "user_id"
++    t.integer "feed_id"
+     t.datetime "created_at", null: false
+     t.datetime "updated_at", null: false
++    t.index ["user_id", "feed_id"], name: "index_likes_on_user_id_and_feed_id", unique: true
+   end
+ 
+   create_table "posts", force: :cascade do |t|

@@ -1,11 +1,17 @@
 <div class="content">
-  <div class="col-lg-8">
+  <div class="col-lg-6">
+    <h2 class="mt-3">Последние новости:</h2>
     <div id="recentNews" class="blog col-lg-11 scrollable">
-      <span class="mt-3">Последние новости:</span>
       <%= render @feeds %>
     </div>
     <div id="infinite-scrolling">
       <%= will_paginate %>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <h2 class="mt-3">Топ 5:</h2>
+    <div id="topNews" class="blog col-lg-11 scrollable">
+      <%= render @topFeeds %>
     </div>
   </div>
 

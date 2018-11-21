@@ -4,19 +4,28 @@ class FeedsController < ApplicationController
   def index
     @current_user = current_user
     ids = @current_user.channels.entries.map(&:id)
-    @feeds = Feed.where(channel_id: ids).paginate(page: params[:page], per_page: 5).order('created_at Desc')
+    @feeds = getRecentFeeds ids
+    @topFeeds = getTopFeeds ids
     respond_to do |format|
       format.html
       format.js
     end
   end
 
-  def get_feeds_old
-    @current_user = current_user
-    @feeds = Array[]
-    @current_user.channels.entries.each_with_index do |channel, index|
-      @feeds[index] = Feedjira::Feed.fetch_and_parse channel.url
+  def getRecentFeeds(ids)
+    Feed.where(channel_id: ids).paginate(page: params[:page], per_page: 5).order('created_at Desc')
+  end
+
+  def getTopFeeds(ids)
+    Feed.where(channel_id: ids).order(:cached_votes_total=> :desc).limit(5)
+  end
+
+  def vote
+    @feed = Feed.find(params[:id])
+    if !current_user.liked? @feed
+      @feed.liked_by current_user
+    elsif current_user.liked? @feed
+      @feed.unliked_by current_user
     end
-    @feeds
   end
 end

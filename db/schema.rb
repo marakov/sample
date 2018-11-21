@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_18_104400) do
+ActiveRecord::Schema.define(version: 2018_11_21_095113) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name", null: false
@@ -35,9 +35,24 @@ ActiveRecord::Schema.define(version: 2018_11_18_104400) do
     t.text "summary"
     t.string "url"
     t.integer "channel_id"
-    t.index ["channel_id"], name: "index_feeds_on_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "cached_votes_total", default: 0
+    t.integer "cached_votes_score", default: 0
+    t.integer "cached_votes_up", default: 0
+    t.integer "cached_votes_down", default: 0
+    t.integer "cached_weighted_score", default: 0
+    t.integer "cached_weighted_total", default: 0
+    t.float "cached_weighted_average", default: 0.0
+    t.index ["channel_id"], name: "index_feeds_on_type_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "feed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "feed_id"], name: "index_likes_on_user_id_and_feed_id", unique: true
   end
 
   create_table "posts", force: :cascade do |t|
@@ -71,6 +86,20 @@ ActiveRecord::Schema.define(version: 2018_11_18_104400) do
     t.string "remember_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["remember_token"], name: "index_users_on_remember_token"
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.string "votable_type"
+    t.integer "votable_id"
+    t.string "voter_type"
+    t.integer "voter_id"
+    t.boolean "vote_flag"
+    t.string "vote_scope"
+    t.integer "vote_weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
+    t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
   end
 
 end

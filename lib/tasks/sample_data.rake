@@ -1,7 +1,7 @@
 namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
-    TestData.perform_async
+    TestDataWorker.perform_async
   end
   desc "Clearing feeds"
   task clearFeeds: :environment do

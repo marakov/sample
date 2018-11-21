@@ -5,7 +5,11 @@ Rails.application.routes.draw do
 
   resources :users
   resources :channels, only: [:index, :show, :create]
-  resources :feeds
+  resources :feeds do
+    member do
+      put "like" => "feeds#vote"
+    end
+  end
   resources :subscribes
   resources :sessions, only: [:new, :create, :destroy]
   resources :posts

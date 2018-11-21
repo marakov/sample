@@ -1,0 +1,8 @@
+var likeBtn = ".like-btn" + <%= @feed.id %>;
+var likesCount = ".likes-count" + <%= @feed.id.to_s %>
+    <% if current_user.liked? @feed %>
+    $(likeBtn).addClass('liked');
+    <% else %>
+    $(likeBtn).removeClass('liked');
+    <% end %>
+    $(likesCount).html("<%= @feed.get_upvotes.size %>")
