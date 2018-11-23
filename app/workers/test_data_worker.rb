@@ -4,10 +4,18 @@ class TestDataWorker
 
   def perform
     puts "TestData: start create test data"
-    createUsers
-    createRandomSubscribes
-    createRandomLikes
+    # createUsers
+    # createRandomSubscribes
+    # createRandomLikes
+    updateChannels
     puts "TestData: success!"
+  end
+
+  def updateChannels
+    ch = Channel.all
+    ch.each do |c|
+      c.user_id = 1
+    end
   end
 
   def createRandomLikes
