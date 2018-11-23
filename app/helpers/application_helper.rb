@@ -19,4 +19,14 @@ module ApplicationHelper
   def convertDate(date)
     DateFormat.change_to(date, "ONLY_DATE")
   end
+
+  def getFeedUrl(feed_url, site_page)
+    if (feed_url.include? "http")
+      return feed_url
+    elsif site_page != nil
+      return site_page + feed_url
+    else
+      return "#"
+    end
+  end
 end

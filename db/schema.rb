@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_21_095113) do
+ActiveRecord::Schema.define(version: 2018_11_23_114727) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name", null: false
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 2018_11_21_095113) do
     t.datetime "updated_at", null: false
     t.integer "category_id"
     t.integer "type_id"
+    t.integer "user_id"
+    t.string "site_page"
     t.index ["category_id"], name: "index_channels_on_category_id"
     t.index ["type_id"], name: "index_channels_on_type_id"
   end
@@ -45,14 +47,6 @@ ActiveRecord::Schema.define(version: 2018_11_21_095113) do
     t.integer "cached_weighted_total", default: 0
     t.float "cached_weighted_average", default: 0.0
     t.index ["channel_id"], name: "index_feeds_on_type_id"
-  end
-
-  create_table "likes", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "feed_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id", "feed_id"], name: "index_likes_on_user_id_and_feed_id", unique: true
   end
 
   create_table "posts", force: :cascade do |t|

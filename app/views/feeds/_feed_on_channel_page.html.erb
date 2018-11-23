@@ -14,7 +14,7 @@
       <%end %>
       </ul>
       <p><%= feed.summary %></p>
-      <a href="<%= feed.url %>">Read More</a>
+      <a href="<%= getFeedUrl(feed.url, @channel.site_page) %>">Read More</a>
     </div>
   </div>
 </div>

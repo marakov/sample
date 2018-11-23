@@ -17,7 +17,7 @@ class FeedsController < ApplicationController
   end
 
   def getTopFeeds(ids)
-    Feed.where(channel_id: ids).order(:cached_votes_total=> :desc).limit(5)
+    Feed.where(channel_id: ids).order(:cached_votes_total => :desc).limit(5)
   end
 
   def vote

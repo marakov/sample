@@ -1,6 +1,7 @@
 class Channel < ApplicationRecord
   belongs_to :type;
   belongs_to :category
+  belongs_to :user
   has_many :subscribes, :dependent => :destroy
   has_many :users, through: :subscribes, source: :user
   has_many :feeds, dependent: :destroy

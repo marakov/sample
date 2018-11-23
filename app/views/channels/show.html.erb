@@ -6,6 +6,14 @@
         <h2><span class="ion-minus"/><%= @channel.name %><span class="ion-minus"/></h2>
         <h4><span class="ion-minus"/><%= @channel.category.name %><span class="ion-minus"/></h4>
         <p style="margin-left: 20px;"><%= @channel.description %></p><br>
+        <% if @channel.user.id == current_user.id %>
+          <%= link_to edit_channel_path(@channel), {
+              :remote => true, 'data-toggle' => "modal", 'data-target' => '#modal-window'}, class: "btn btn-primary a-btn-slide-text" do %>
+            <%#= link_to edit_channel_path(@channel), class: "btn btn-primary a-btn-slide-text", remote: :true do %>
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+            <span><strong>Edit</strong></span>
+          <% end %>
+        <% end %>
         <div class="col-lg-5 pull-right">
           <%= render "channels/subscribe_form", :user => current_user %>
         </div>
@@ -24,8 +32,10 @@
       <div style="margin:40px 0px;"></div>
       <% i += 1 %>
     <% end %>
-<!--    <div id="infinite-scrolling">-->
+    <% unless @fromRss %>
       <%= will_paginate @feeds %>
-<!--    </div>-->
+    <% end %>
   </div>
+
+  <%= render 'dialog' %>
 </div>

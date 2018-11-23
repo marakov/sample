@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => "/sidekiq"
 
   resources :users
-  resources :channels, only: [:index, :show, :create]
+  resources :channels, only: [:index, :show, :create, :edit]
   resources :feeds do
     member do
       put "like" => "feeds#vote"

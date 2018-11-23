@@ -19,6 +19,14 @@ class ChannelsController < ApplicationController
     end
   end
 
+  def edit
+    @channel = Channel.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.js {render :action => "editChannel"}
+    end
+  end
+
   def search
     s = "select * from channels where LOWER(name) LIKE LOWER('%" + params[:channel][:name] +
         "%') and LOWER(url) LIKE LOWER('%" + params[:channel][:uri] + "%')"
@@ -55,7 +63,7 @@ class ChannelsController < ApplicationController
   end
 
   def channel_params
-    params.require(:channel).permit(:name, :url, :description, :category_id, :type_id)
+    params.require(:channel).permit(:name, :url, :description, :category_id, :type_id, :user_id, :site_page)
   end
 
   def checkRssLinkAction?
