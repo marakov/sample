@@ -15,6 +15,7 @@ class TestDataWorker
     ch = Channel.all
     ch.each do |c|
       c.user_id = 1
+      c.save
     end
   end
 
