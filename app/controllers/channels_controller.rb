@@ -63,7 +63,7 @@ class ChannelsController < ApplicationController
     @channel = Channel.find(params[:id])
 
     if @channel.update(channel_params)
-      ChannelUpdateWorker.perform_async @channel
+      ChannelUpdateWorker.perform_async @channel.id
       redirect_to @channel
     else
       @categories = Category.all
