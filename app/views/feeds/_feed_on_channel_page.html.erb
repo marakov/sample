@@ -9,12 +9,25 @@
         <li><i class="fa fa-user"></i><%= @channel.name %></li>
         <% if @fromRss %>
           <li><i class="fa fa-clock-o"></i><%= convertDate feed.published %></li>
-          <%else %>
+        <% else %>
           <li><i class="fa fa-clock-o"></i><%= convertDate feed.created_at %></li>
-      <%end %>
+        <% end %>
       </ul>
       <p><%= feed.summary %></p>
-      <a href="<%= getFeedUrl(feed.url, @channel.site_page) %>">Read More</a>
+      <a href="<%= getFeedUrl(feed.url, @channel.site_page) %>">Читать</a>
+      <% unless @fromRss %>
+        <% @class = "like-btn" + feed.id.to_s %>
+        <% @likesCount = "likes-count" + feed.id.to_s %>
+        <% if current_user.liked? feed %>
+          <% @class += " liked" %>
+        <% end %>
+        <%= link_to like_feed_path(feed), method: :put, remote: :true, class: @class do %>
+          <ul class="col-lg-3 list-inline">
+            <li><i class="fa fa-thumbs-up fa-1x"></i></li>
+            <li class="<%= @likesCount %>"><%= feed.get_upvotes.size %></li>
+          </ul>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

@@ -21,10 +21,7 @@ class ChannelsController < ApplicationController
 
   def edit
     @channel = Channel.find(params[:id])
-    respond_to do |format|
-      format.html
-      format.js {render :action => "editChannel"}
-    end
+    @categories = Category.all
   end
 
   def search
@@ -59,6 +56,18 @@ class ChannelsController < ApplicationController
           format.js {render :action => "rssCheck"}
         end
       end
+    end
+  end
+
+  def update
+    @channel = Channel.find(params[:id])
+
+    if @channel.update(channel_params)
+      RssWorker.perform_async Array[ @channel ]
+      redirect_to @channel
+    else
+      @categories = Category.all
+      render 'edit'
     end
   end
 

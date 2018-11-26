@@ -6,7 +6,7 @@
       <li><i class="fa fa-clock-o"></i><%= convertDate feed.created_at %></li>
     </ul>
     <p><%= feed.summary %></p>
-    <a href="<%= feed.url %>">Read More</a>
+    <a href="<%= getFeedUrl(feed.url, feed.channel.site_page) %>">Читать</a>
     <% @class = "like-btn" + feed.id.to_s %>
     <% @likesCount = "likes-count" + feed.id.to_s %>
     <% if current_user.liked? feed %>

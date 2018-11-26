@@ -2,14 +2,13 @@ class RssWorker
   include Sidekiq::Worker
   sidekiq_options retry: false
 
-  def perform
+  def perform(channels)
     puts "RssWorker: start load feed via rss!"
-    fetchFeeds
+    fetchFeeds channels
     puts "RssWorker: success!"
   end
 
-  def fetchFeeds
-    channels = Channel.all
+  def fetchFeeds(channels)
     channels.entries.each do |channel|
       puts channel.name
       feeds = Feedjira::Feed.fetch_and_parse channel.url
