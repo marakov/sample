@@ -34,6 +34,17 @@ class ChannelsController < ApplicationController
     end
   end
 
+  def update
+    @channel = Channel.find(params[:id])
+
+    if @channel.update(channel_params)
+      ChannelUpdateWorker.perform_async @channel.id
+      redirect_to @channel
+    else
+      @categories = Category.all
+      render 'edit'
+    end
+  end
 
   def create
     @channel = Channel.new(channel_params)
@@ -59,17 +70,8 @@ class ChannelsController < ApplicationController
     end
   end
 
-  def update
-    @channel = Channel.find(params[:id])
 
-    if @channel.update(channel_params)
-      ChannelUpdateWorker.perform_async @channel.id
-      redirect_to @channel
-    else
-      @categories = Category.all
-      render 'edit'
-    end
-  end
+  private
 
   def channel_params
     params.require(:channel).permit(:name, :url, :description, :category_id, :type_id, :user_id, :site_page)

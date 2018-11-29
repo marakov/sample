@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>99902c12-7e1b-4bd7-9c4a-58cb83d87b54.SCHEMA:main</OriginalElement>
+  <nodes>
+    <node x="327.5" y="590.5">99902c12-7e1b-4bd7-9c4a-58cb83d87b54.TABLE:main.feeds</node>
+    <node x="64.5" y="267.5">99902c12-7e1b-4bd7-9c4a-58cb83d87b54.TABLE:main.users</node>
+    <node x="638.5" y="20.5">99902c12-7e1b-4bd7-9c4a-58cb83d87b54.TABLE:main.types</node>
+    <node x="638.5" y="234.5">99902c12-7e1b-4bd7-9c4a-58cb83d87b54.TABLE:main.channels</node>
+    <node x="78.5" y="-1.5">99902c12-7e1b-4bd7-9c4a-58cb83d87b54.TABLE:main.posts</node>
+    <node x="918.5" y="300.5">99902c12-7e1b-4bd7-9c4a-58cb83d87b54.TABLE:main.categories</node>
+    <node x="645.5" y="951.5">99902c12-7e1b-4bd7-9c4a-58cb83d87b54.TABLE:main.subscribes</node>
+    <node x="77.5" y="634.5">99902c12-7e1b-4bd7-9c4a-58cb83d87b54.TABLE:main.votes</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="99902c12-7e1b-4bd7-9c4a-58cb83d87b54.TABLE:main.channels" target="99902c12-7e1b-4bd7-9c4a-58cb83d87b54.TABLE:main.types">
+      <point x="0.0" y="-125.5" />
+      <point x="0.0" y="59.5" />
+    </edge>
+    <edge source="99902c12-7e1b-4bd7-9c4a-58cb83d87b54.TABLE:main.subscribes" target="99902c12-7e1b-4bd7-9c4a-58cb83d87b54.TABLE:main.channels">
+      <point x="0.0" y="-48.5" />
+      <point x="0.0" y="125.5" />
+    </edge>
+    <edge source="99902c12-7e1b-4bd7-9c4a-58cb83d87b54.TABLE:main.channels" target="99902c12-7e1b-4bd7-9c4a-58cb83d87b54.TABLE:main.categories">
+      <point x="81.5" y="0.0" />
+      <point x="-81.5" y="0.0" />
+    </edge>
+    <edge source="99902c12-7e1b-4bd7-9c4a-58cb83d87b54.TABLE:main.votes" target="99902c12-7e1b-4bd7-9c4a-58cb83d87b54.TABLE:main.users">
+      <point x="0.0" y="-125.5" />
+      <point x="0.0" y="92.5" />
+    </edge>
+    <edge source="99902c12-7e1b-4bd7-9c4a-58cb83d87b54.TABLE:main.feeds" target="99902c12-7e1b-4bd7-9c4a-58cb83d87b54.TABLE:main.channels">
+      <point x="0.0" y="-169.5" />
+      <point x="440.0" y="400.0" />
+      <point x="-81.5" y="40.0" />
+    </edge>
+    <edge source="99902c12-7e1b-4bd7-9c4a-58cb83d87b54.TABLE:main.channels" target="99902c12-7e1b-4bd7-9c4a-58cb83d87b54.TABLE:main.users">
+      <point x="-81.5" y="0.0" />
+      <point x="95.5" y="0.0" />
+    </edge>
+    <edge source="99902c12-7e1b-4bd7-9c4a-58cb83d87b54.TABLE:main.posts" target="99902c12-7e1b-4bd7-9c4a-58cb83d87b54.TABLE:main.users">
+      <point x="0.0" y="81.5" />
+      <point x="0.0" y="-92.5" />
+    </edge>
+    <edge source="99902c12-7e1b-4bd7-9c4a-58cb83d87b54.TABLE:main.votes" target="99902c12-7e1b-4bd7-9c4a-58cb83d87b54.TABLE:main.feeds">
+      <point x="82.5" y="0.0" />
+      <point x="-112.5" y="0.0" />
+    </edge>
+    <edge source="99902c12-7e1b-4bd7-9c4a-58cb83d87b54.TABLE:main.subscribes" target="99902c12-7e1b-4bd7-9c4a-58cb83d87b54.TABLE:main.users">
+      <point x="-74.5" y="0.0" />
+      <point x="0.0" y="1000.0" />
+      <point x="0.0" y="360.0" />
+      <point x="-95.5" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.8123249299719888" x="541.0" y="567.5" />
+  <SelectedNodes>
+    <node>99902c12-7e1b-4bd7-9c4a-58cb83d87b54.TABLE:main.votes</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Key columns</Category>
+    <Category>Columns</Category>
+  </Categories>
+</Diagram>
+
