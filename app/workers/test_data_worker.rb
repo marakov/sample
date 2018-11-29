@@ -30,8 +30,16 @@ class TestDataWorker
       while i < numberOfLikes
         userIndex = rand(0..size)
         u = users[userIndex]
-        if !u.liked? feed
-          feed.liked_by u
+        puts u.name
+        puts feed.title
+        puts feed.channel_id
+        if u.is_a? User
+          puts "is a user"
+          if !u.liked? feed
+            puts "has no like"
+            feed.liked_by u
+            puts "liked"
+          end
         end
       end
     end
