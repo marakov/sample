@@ -22,25 +22,11 @@ class TestDataWorker
   def createRandomLikes
     puts "creating likes.."
     size = Feed.all.size
-    feeds = Feed.all.entries
+    feeds = Feed.limit(15)
     users = User.all.entries
     feeds.each do |feed|
-      numberOfLikes = rand(0..users.size)
-      i = 0
-      while i < numberOfLikes
-        userIndex = rand(0..size)
-        u = users[userIndex]
-        puts u.name
-        puts feed.title
-        puts feed.channel_id
-        if u.is_a? User
-          puts "is a user"
-          if !u.liked? feed
-            puts "has no like"
-            feed.liked_by u
-            puts "liked"
-          end
-        end
+      users.each do |user|
+        feed.liked_by user
       end
     end
     puts "ended"
