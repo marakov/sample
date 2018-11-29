@@ -2,10 +2,8 @@ class FeedsController < ApplicationController
   include SignedInUser
 
   def index
-    @current_user = current_user
-    ids = @current_user.channels.entries.map(&:id)
-    @feeds = getRecentFeeds ids
-    @topFeeds = getTopFeeds ids
+    @feeds = getRecentFeeds current_user.channels.entries.map(&:id)
+    @topFeeds = getTopFeeds Channel.all.entries.map(&:id)
     respond_to do |format|
       format.html
       format.js

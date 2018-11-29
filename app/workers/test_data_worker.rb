@@ -6,8 +6,8 @@ class TestDataWorker
     puts "TestData: start create test data"
     # createUsers
     # createRandomSubscribes
-    # createRandomLikes
-    updateChannels
+    createRandomLikes
+    # updateChannels
     puts "TestData: success!"
   end
 
@@ -22,16 +22,17 @@ class TestDataWorker
   def createRandomLikes
     puts "creating likes.."
     size = Feed.all.size
+    feeds = Feed.all.entries
     unless size == 0
-      feeds = Feed.all.entries
       User.all.each do |user|
-        numberOfLikes = rand(0..50)
+        numberOfLikes = rand(0..size/3)
         i = 0
         while i < numberOfLikes
-          number = rand(0..200)
-          f = feeds[number]
+          feedIndex = rand(0..size)
+          f = feeds[feedIndex]
           f.liked_by user
           i += 1
+          puts "user: " + user.name + " liked: " + f.title
         end
       end
     end
