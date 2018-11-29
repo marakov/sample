@@ -23,16 +23,15 @@ class TestDataWorker
     puts "creating likes.."
     size = Feed.all.size
     feeds = Feed.all.entries
-    unless size == 0
-      User.all.each do |user|
-        numberOfLikes = rand(0..size/3)
-        i = 0
-        while i < numberOfLikes
-          feedIndex = rand(0..size)
-          f = feeds[feedIndex]
-          f.liked_by user
-          i += 1
-          puts "user: " + user.name + " liked: " + f.title
+    users = User.all.entries
+    feeds.each do |feed|
+      numberOfLikes = rand(0..users.size)
+      i = 0
+      while i < numberOfLikes
+        userIndex = rand(0..size)
+        u = users[userIndex]
+        if !u.liked? feed
+          feed.liked_by u
         end
       end
     end
