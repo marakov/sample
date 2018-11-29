@@ -21,7 +21,6 @@ class TestDataWorker
 
   def createRandomLikes
     puts "creating likes.."
-    size = Feed.all.size
     feeds = Feed.limit(15)
     users = User.all.entries
     feeds.each do |feed|
